@@ -163,11 +163,11 @@ function App() {
           </div>
 
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-purple-900 mb-3 px-2">
-            Receba seu Presente Espiritual + Consulta Gratuita
+            Receba seu Presente Espiritual + Consulta Gratuita na Próxima Semana
           </h1>
 
           <p className="text-sm sm:text-base text-gray-700 leading-relaxed px-2">
-            Preencha o formulário e receba seu material exclusivo com sua consulta gratuita
+            Preencha o formulário e receba seu material exclusivo + <span className="text-purple-700 font-semibold">sua consulta gratuita agendada para a próxima semana</span>
           </p>
         </div>
 
@@ -203,7 +203,7 @@ function App() {
               Obrigado! Seus dados foram enviados com sucesso.
             </p>
             <p className="text-purple-700 text-sm sm:text-base mt-2">
-              Seu material será enviado por e-mail e sua leitura gratuita será agendada.
+              Seu material será enviado por e-mail e sua <strong>consulta gratuita será agendada para a próxima semana</strong>.
             </p>
           </div>
         )}
