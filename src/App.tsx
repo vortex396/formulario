@@ -142,66 +142,49 @@ function App() {
       <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-amber-50 py-6 px-4 sm:py-12 flex items-center justify-center">
         <div className="max-w-2xl mx-auto">
           <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 sm:p-12 border-2 border-purple-200 text-center">
-            <div className="mb-6">
+            <div className="mb-8">
               <CheckCircle className="w-20 h-20 sm:w-24 sm:h-24 text-green-500 mx-auto mb-4" />
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-purple-900 mb-4">
                 Obrigado!
               </h1>
               <div className="w-20 h-1 bg-purple-400 mx-auto mb-6"></div>
+              <p className="text-lg sm:text-xl text-gray-700 mb-2">
+                Seu formulário foi enviado com sucesso
+              </p>
+              <p className="text-sm sm:text-base text-gray-600">
+                Seus dados foram salvos com segurança
+              </p>
             </div>
 
-            <div className="space-y-6 text-left">
-              <div className="bg-green-50 border-2 border-green-300 rounded-2xl p-6">
-                <div className="flex items-start gap-3 mb-3">
-                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-                  <div>
-                    <h2 className="text-xl font-bold text-green-900 mb-2">
-                      Formulário enviado com sucesso!
-                    </h2>
-                    <p className="text-green-800">
-                      Você já preencheu o formulário e seus dados foram salvos.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
+            <div className="space-y-6">
               <div className="bg-purple-50 border-2 border-purple-300 rounded-2xl p-6">
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-3 justify-center text-center">
                   <MessageCircle className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
                   <div>
-                    <h2 className="text-xl font-bold text-purple-900 mb-3">
-                      Próximo passo: Volte ao WhatsApp
+                    <h2 className="text-xl font-bold text-purple-900 mb-2">
+                      Volte para a conversa no WhatsApp
                     </h2>
-                    <p className="text-purple-800 mb-4">
-                      Para receber sua leitura e agendar sua consulta gratuita para a próxima semana, volte para o WhatsApp agora.
+                    <p className="text-purple-800">
+                      Para receber sua leitura e agendar sua consulta gratuita para a próxima semana
                     </p>
-                    <a
-                      href="https://wa.me/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
-                    >
-                      <MessageCircle className="w-5 h-5" />
-                      Voltar ao WhatsApp
-                    </a>
                   </div>
                 </div>
               </div>
 
               <div className="bg-amber-50 border-2 border-amber-300 rounded-2xl p-6">
-                <h3 className="text-lg font-bold text-amber-900 mb-2">
+                <h3 className="text-lg font-bold text-amber-900 mb-3">
                   O que você vai receber:
                 </h3>
-                <ul className="space-y-2 text-amber-800">
-                  <li className="flex items-start gap-2">
+                <ul className="space-y-3 text-amber-800 text-left">
+                  <li className="flex items-start gap-3">
                     <Sparkles className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
                     <span>Material exclusivo espiritual por e-mail</span>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex items-start gap-3">
                     <Moon className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
                     <span>Consulta gratuita agendada para a próxima semana</span>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex items-start gap-3">
                     <MessageCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
                     <span>Instruções completas via WhatsApp</span>
                   </li>
@@ -210,9 +193,12 @@ function App() {
             </div>
 
             <div className="mt-8 pt-6 border-t border-purple-200">
-              <p className="text-sm text-gray-600">
-                Seus dados estão protegidos conforme a LGPD
-              </p>
+              <div className="flex items-center justify-center gap-2">
+                <Shield className="w-4 h-4 text-gray-500" />
+                <p className="text-sm text-gray-600">
+                  Seus dados estão protegidos conforme a LGPD
+                </p>
+              </div>
             </div>
           </div>
         </div>
