@@ -153,34 +153,30 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-amber-50 py-12 px-4">
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-8">
-          <div className="flex justify-center items-center gap-2 mb-4">
-            <Sparkles className="w-8 h-8 text-purple-400" />
-            <Moon className="w-10 h-10 text-purple-500" />
-            <Sparkles className="w-8 h-8 text-purple-400" />
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-amber-50 py-6 px-4 sm:py-12">
+      <div className="max-w-lg mx-auto">
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="flex justify-center items-center gap-2 mb-3">
+            <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-purple-400" />
+            <Moon className="w-8 h-8 sm:w-10 sm:h-10 text-purple-500" />
+            <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-purple-400" />
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-purple-900 mb-4">
-            ✨ Receba seu Presente Espiritual + Consulta Gratuita ✨
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-purple-900 mb-3 px-2">
+            Receba seu Presente Espiritual + Consulta Gratuita
           </h1>
 
-          <p className="text-lg text-gray-700 leading-relaxed">
-            Antes de eu preparar sua leitura, quero te entregar um material exclusivo e garantir sua consulta gratuita para a próxima semana 💫
-            <br />
-            <span className="text-purple-600 font-medium">
-              Preencha abaixo — é rápido, gratuito e seguro.
-            </span>
+          <p className="text-sm sm:text-base text-gray-700 leading-relaxed px-2">
+            Preencha o formulário e receba seu material exclusivo com sua consulta gratuita
           </p>
         </div>
 
-        <div className="flex justify-center mb-8">
-          <div className="flex items-center gap-2">
+        <div className="flex justify-center mb-6">
+          <div className="flex items-center gap-1">
             {[1, 2, 3, 4].map((num) => (
               <div key={num} className="flex items-center">
                 <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all ${
+                  className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm transition-all ${
                     step >= num
                       ? 'bg-purple-600 text-white'
                       : 'bg-gray-200 text-gray-500'
@@ -190,7 +186,7 @@ function App() {
                 </div>
                 {num < 4 && (
                   <div
-                    className={`w-12 h-1 mx-1 transition-all ${
+                    className={`w-6 sm:w-8 h-1 mx-0.5 transition-all ${
                       step > num ? 'bg-purple-600' : 'bg-gray-200'
                     }`}
                   />
@@ -201,25 +197,25 @@ function App() {
         </div>
 
         {success && (
-          <div className="mb-8 p-6 bg-purple-100 border-2 border-purple-300 rounded-2xl text-center animate-fade-in">
-            <Moon className="w-12 h-12 text-purple-600 mx-auto mb-3" />
-            <p className="text-purple-900 text-lg font-medium">
-              🌙 Obrigado! Seus dados foram enviados com sucesso.
+          <div className="mb-6 p-4 sm:p-6 bg-purple-100 border-2 border-purple-300 rounded-2xl text-center">
+            <Moon className="w-10 h-10 sm:w-12 sm:h-12 text-purple-600 mx-auto mb-2" />
+            <p className="text-purple-900 text-base sm:text-lg font-medium">
+              Obrigado! Seus dados foram enviados com sucesso.
             </p>
-            <p className="text-purple-700 mt-2">
+            <p className="text-purple-700 text-sm sm:text-base mt-2">
               Seu material será enviado por e-mail e sua leitura gratuita será agendada.
             </p>
           </div>
         )}
 
-        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-10 border border-purple-100">
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl shadow-xl p-5 sm:p-8 border border-purple-100">
+          <form onSubmit={handleSubmit} className="space-y-5">
             {step === 1 && (
-              <div className="space-y-4">
-                <h2 className="text-2xl font-serif font-bold text-purple-900 mb-4">
+              <div className="space-y-3">
+                <h2 className="text-lg sm:text-xl font-serif font-bold text-purple-900 mb-3">
                   Você já conhecia a Mãe Neusa / meu trabalho?
                 </h2>
-                <div className="space-y-3">
+                <div className="space-y-2.5">
                   {[
                     { value: 'Sim, já fiz várias vezes', label: 'Sim, já fiz várias vezes' },
                     { value: 'Sim, uma vez', label: 'Sim, uma vez' },
@@ -227,7 +223,7 @@ function App() {
                   ].map((option) => (
                     <label
                       key={option.value}
-                      className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all hover:border-purple-400 ${
+                      className={`flex items-center gap-3 p-3.5 sm:p-4 rounded-xl border-2 cursor-pointer transition-all hover:border-purple-400 ${
                         formData.jaConhecia === option.value
                           ? 'border-purple-600 bg-purple-50'
                           : 'border-purple-200'
@@ -239,9 +235,9 @@ function App() {
                         value={option.value}
                         checked={formData.jaConhecia === option.value}
                         onChange={handleChange}
-                        className="w-5 h-5 text-purple-600 focus:ring-2 focus:ring-purple-400"
+                        className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600 focus:ring-2 focus:ring-purple-400 flex-shrink-0"
                       />
-                      <span className="text-gray-800 font-medium">{option.label}</span>
+                      <span className="text-sm sm:text-base text-gray-800 font-medium">{option.label}</span>
                     </label>
                   ))}
                 </div>
@@ -252,11 +248,11 @@ function App() {
             )}
 
             {step === 2 && (
-              <div className="space-y-4">
-                <h2 className="text-2xl font-serif font-bold text-purple-900 mb-4">
+              <div className="space-y-3">
+                <h2 className="text-lg sm:text-xl font-serif font-bold text-purple-900 mb-3">
                   Qual área você quer que eu foque na sua leitura?
                 </h2>
-                <div className="space-y-3">
+                <div className="space-y-2.5">
                   {[
                     'Amor / Relacionamentos',
                     'Trabalho / Carreira',
@@ -267,7 +263,7 @@ function App() {
                   ].map((option) => (
                     <label
                       key={option}
-                      className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all hover:border-purple-400 ${
+                      className={`flex items-center gap-3 p-3.5 sm:p-4 rounded-xl border-2 cursor-pointer transition-all hover:border-purple-400 ${
                         formData.areaFoco === option
                           ? 'border-purple-600 bg-purple-50'
                           : 'border-purple-200'
@@ -279,9 +275,9 @@ function App() {
                         value={option}
                         checked={formData.areaFoco === option}
                         onChange={handleChange}
-                        className="w-5 h-5 text-purple-600 focus:ring-2 focus:ring-purple-400"
+                        className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600 focus:ring-2 focus:ring-purple-400 flex-shrink-0"
                       />
-                      <span className="text-gray-800 font-medium">{option}</span>
+                      <span className="text-sm sm:text-base text-gray-800 font-medium">{option}</span>
                     </label>
                   ))}
                 </div>
@@ -309,11 +305,11 @@ function App() {
             )}
 
             {step === 3 && (
-              <div className="space-y-4">
-                <h2 className="text-2xl font-serif font-bold text-purple-900 mb-4">
+              <div className="space-y-3">
+                <h2 className="text-lg sm:text-xl font-serif font-bold text-purple-900 mb-3">
                   Como chegou até nós?
                 </h2>
-                <div className="space-y-3">
+                <div className="space-y-2.5">
                   {[
                     'Indicação de amigo/familiar',
                     'Instagram / Facebook',
@@ -323,7 +319,7 @@ function App() {
                   ].map((option) => (
                     <label
                       key={option}
-                      className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all hover:border-purple-400 ${
+                      className={`flex items-center gap-3 p-3.5 sm:p-4 rounded-xl border-2 cursor-pointer transition-all hover:border-purple-400 ${
                         formData.comoConheceu === option
                           ? 'border-purple-600 bg-purple-50'
                           : 'border-purple-200'
@@ -335,9 +331,9 @@ function App() {
                         value={option}
                         checked={formData.comoConheceu === option}
                         onChange={handleChange}
-                        className="w-5 h-5 text-purple-600 focus:ring-2 focus:ring-purple-400"
+                        className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600 focus:ring-2 focus:ring-purple-400 flex-shrink-0"
                       />
-                      <span className="text-gray-800 font-medium">{option}</span>
+                      <span className="text-sm sm:text-base text-gray-800 font-medium">{option}</span>
                     </label>
                   ))}
                 </div>
@@ -365,8 +361,8 @@ function App() {
             )}
 
             {step === 4 && (
-              <div className="space-y-6">
-                <h2 className="text-2xl font-serif font-bold text-purple-900 mb-4">
+              <div className="space-y-4">
+                <h2 className="text-lg sm:text-xl font-serif font-bold text-purple-900 mb-3">
                   Seus dados para receber o presente
                 </h2>
 
@@ -451,14 +447,14 @@ function App() {
               </div>
             )}
 
-            <div className="flex gap-4 pt-4">
+            <div className="flex gap-3 pt-4">
               {step > 1 && (
                 <button
                   type="button"
                   onClick={prevStep}
-                  className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl border-2 border-purple-600 text-purple-600 font-bold hover:bg-purple-50 transition-all"
+                  className="flex items-center justify-center gap-1.5 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl border-2 border-purple-600 text-purple-600 text-sm sm:text-base font-bold hover:bg-purple-50 transition-all"
                 >
-                  <ChevronLeft className="w-5 h-5" />
+                  <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
                   Voltar
                 </button>
               )}
@@ -467,16 +463,16 @@ function App() {
                 <button
                   type="button"
                   onClick={nextStep}
-                  className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all"
+                  className="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600 text-white text-sm sm:text-base font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
                 >
                   Próximo
-                  <ChevronRight className="w-5 h-5" />
+                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               ) : (
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex-1 bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                  className="flex-1 bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600 text-white text-sm sm:text-base font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-xl shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? 'Enviando...' : 'Enviar e Receber Meu Presente'}
                 </button>
@@ -485,11 +481,11 @@ function App() {
           </form>
         </div>
 
-        <footer className="mt-8 text-center">
-          <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
-            <Shield className="w-4 h-4" />
+        <footer className="mt-6 sm:mt-8 text-center px-2">
+          <div className="flex items-center justify-center gap-2 text-xs sm:text-sm text-gray-600">
+            <Shield className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
             <p>
-              ⚖️ Seus dados são protegidos conforme a Lei Geral de Proteção de Dados (LGPD).
+              Seus dados são protegidos conforme a LGPD
             </p>
           </div>
         </footer>
