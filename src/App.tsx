@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Moon, Sparkles, Shield, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Moon, Sparkles, Shield, ChevronRight, ChevronLeft, CheckCircle, MessageCircle } from 'lucide-react';
 import { supabase } from './lib/supabase';
 import { validateCPF, validateEmail } from './utils/validation';
 
@@ -18,7 +18,7 @@ function App() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -126,23 +126,8 @@ function App() {
 
       if (error) throw error;
 
-      setSuccess(true);
-      setStep(1);
-      setFormData({
-        jaConhecia: '',
-        areaFoco: '',
-        areaFocoOutro: '',
-        comoConheceu: '',
-        comoConheceuOutro: '',
-        nomeCompleto: '',
-        email: '',
-        cpf: '',
-        consentimentoLgpd: false
-      });
-
-      setTimeout(() => {
-        setSuccess(false);
-      }, 8000);
+      setShowThankYou(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
 
     } catch (error) {
       console.error('Erro ao enviar dados:', error);
@@ -151,6 +136,89 @@ function App() {
       setLoading(false);
     }
   };
+
+  if (showThankYou) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-amber-50 py-6 px-4 sm:py-12 flex items-center justify-center">
+        <div className="max-w-2xl mx-auto">
+          <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 sm:p-12 border-2 border-purple-200 text-center">
+            <div className="mb-6">
+              <CheckCircle className="w-20 h-20 sm:w-24 sm:h-24 text-green-500 mx-auto mb-4" />
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-purple-900 mb-4">
+                Obrigado!
+              </h1>
+              <div className="w-20 h-1 bg-purple-400 mx-auto mb-6"></div>
+            </div>
+
+            <div className="space-y-6 text-left">
+              <div className="bg-green-50 border-2 border-green-300 rounded-2xl p-6">
+                <div className="flex items-start gap-3 mb-3">
+                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                  <div>
+                    <h2 className="text-xl font-bold text-green-900 mb-2">
+                      Formulário enviado com sucesso!
+                    </h2>
+                    <p className="text-green-800">
+                      Você já preencheu o formulário e seus dados foram salvos.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-purple-50 border-2 border-purple-300 rounded-2xl p-6">
+                <div className="flex items-start gap-3">
+                  <MessageCircle className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
+                  <div>
+                    <h2 className="text-xl font-bold text-purple-900 mb-3">
+                      Próximo passo: Volte ao WhatsApp
+                    </h2>
+                    <p className="text-purple-800 mb-4">
+                      Para receber sua leitura e agendar sua consulta gratuita para a próxima semana, volte para o WhatsApp agora.
+                    </p>
+                    <a
+                      href="https://wa.me/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
+                    >
+                      <MessageCircle className="w-5 h-5" />
+                      Voltar ao WhatsApp
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-amber-50 border-2 border-amber-300 rounded-2xl p-6">
+                <h3 className="text-lg font-bold text-amber-900 mb-2">
+                  O que você vai receber:
+                </h3>
+                <ul className="space-y-2 text-amber-800">
+                  <li className="flex items-start gap-2">
+                    <Sparkles className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <span>Material exclusivo espiritual por e-mail</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Moon className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <span>Consulta gratuita agendada para a próxima semana</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <MessageCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <span>Instruções completas via WhatsApp</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-purple-200">
+              <p className="text-sm text-gray-600">
+                Seus dados estão protegidos conforme a LGPD
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-amber-50 py-6 px-4 sm:py-12">
@@ -195,18 +263,6 @@ function App() {
             ))}
           </div>
         </div>
-
-        {success && (
-          <div className="mb-6 p-4 sm:p-6 bg-purple-100 border-2 border-purple-300 rounded-2xl text-center">
-            <Moon className="w-10 h-10 sm:w-12 sm:h-12 text-purple-600 mx-auto mb-2" />
-            <p className="text-purple-900 text-base sm:text-lg font-medium">
-              Obrigado! Seus dados foram enviados com sucesso.
-            </p>
-            <p className="text-purple-700 text-sm sm:text-base mt-2">
-              Seu material será enviado por e-mail e sua <strong>consulta gratuita será agendada para a próxima semana</strong>.
-            </p>
-          </div>
-        )}
 
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl shadow-xl p-5 sm:p-8 border border-purple-100">
           <form onSubmit={handleSubmit} className="space-y-5">
